@@ -39,7 +39,6 @@ const fillOrbital = (numElectrons, configurations) => {
     const _fillOrbital = (numElectrons, symbol) => {
         for (const configuration in configurations) {
             configurations[configuration].innerHTML += symbol;
-            // console.log(configuration);
             numElectrons--;
             if (numElectrons === 0)
                 return 0;
@@ -48,7 +47,7 @@ const fillOrbital = (numElectrons, configurations) => {
     }
 
     numElectrons =  _fillOrbital(numElectrons, "↑");
-    if (numElectrons == 0)
+    if (numElectrons === 0)
         return 0;
     return _fillOrbital(numElectrons, "↓");
 }
@@ -65,7 +64,7 @@ export const fillOrbitals = (numElectrons) => {
         const configurations = Array.from(document.querySelectorAll(`.${orbital[1]}${orbital[0]}`));
         clearConfigurations(configurations);
         numElectrons = fillOrbital(numElectrons, configurations);
-        if (numElectrons == 0)
+        if (numElectrons === 0)
             return;
     }
 }

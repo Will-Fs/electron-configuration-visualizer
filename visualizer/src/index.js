@@ -44,14 +44,14 @@ const configRoot = ReactDOM.createRoot(
   document.querySelector(".content-container")
 );
 
-configRoot.render(new Config().render(createConfiguration(1)));
-
 const renderOrbitals = () => {
   const energyLevel = Math.max(document.querySelector("#energy-level").value, 1);
   const config = createConfiguration(energyLevel);
   const div = new Config().render(config);
   configRoot.render(div);
 }
+
+renderOrbitals();
 
 document.querySelector("#energy-level").onchange = () => {
   renderOrbitals();
