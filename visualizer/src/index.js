@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import './orbitalConfigurations'
-import { createConfiguration, orbtialLetters, fillOrbitals } from './orbitalConfigurations';
+import { createConfiguration, orbtialLetters, fillOrbitals, orbitalConfigs } from './orbitalConfigurations';
 import { v4 as uuidv4 } from 'uuid';
 
 class Config extends React.Component {
@@ -53,14 +53,20 @@ const renderOrbitals = () => {
 
 renderOrbitals();
 
-document.querySelector("#energy-level").onchange = () => {
+document.querySelector("#energy-level").onchange = (e) => {
+  e.target.value = Math.min(Math.max(e.target.value, 1), 8);
   renderOrbitals();
 }
 
 document.querySelector("#num-electrons").onchange = (event) => {
-  event.target.value = Math.max(event.target.value, 1);
+  event.target.value = Math.min(Math.max(event.target.value, 1), 118);
   renderOrbitals()
   setTimeout(() => {
     fillOrbitals(document.querySelector("#num-electrons").value);
+    const configP = document.querySelector("#configuration");
+    configP.innerHTML = "Configuration: ";
+    for (const [orbital, number] of Object.entries(orbitalConfigs)) {
+      configP.innerHTML += `${orbital}<sup>${number}</sup>`;
+    }
   }, 0);
 }

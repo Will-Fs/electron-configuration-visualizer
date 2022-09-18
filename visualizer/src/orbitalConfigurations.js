@@ -10,6 +10,8 @@ const orbitalFillOrder = [
     '1s', '2s', '2p', '3s', '3p', '4s', '3d', '4p', '5s', '4d', '5p', '6s', '4f', '5d', '6p', '7s', '5f', '6d', '7p', '8s'
 ];
 
+export var orbitalConfigs = {};
+
 const createEnergyLevel = (n) => {
     const orbitals = {}
     for (let l = 0; l < n; l++) {
@@ -33,12 +35,12 @@ export const createConfiguration = (numLevels) => {
     };
 }
 
+const fillOrbital = (numElectrons, configurations, orbital) => {
 
-
-const fillOrbital = (numElectrons, configurations) => {
     const _fillOrbital = (numElectrons, symbol) => {
         for (const configuration in configurations) {
             configurations[configuration].innerHTML += symbol;
+            orbitalConfigs[orbital]++;
             numElectrons--;
             if (numElectrons === 0)
                 return 0;
@@ -59,11 +61,13 @@ const clearConfigurations = (configurations) => {
 }
 
 export const fillOrbitals = (numElectrons) => {
+    orbitalConfigs = {};
     for (let orbital in orbitalFillOrder) {
         orbital = orbitalFillOrder[orbital];
         const configurations = Array.from(document.querySelectorAll(`.${orbital[1]}${orbital[0]}`));
+        orbitalConfigs[orbital] = 0;
         clearConfigurations(configurations);
-        numElectrons = fillOrbital(numElectrons, configurations);
+        numElectrons = fillOrbital(numElectrons, configurations, orbital);
         if (numElectrons === 0)
             return;
     }

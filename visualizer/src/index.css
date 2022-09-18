@@ -48,7 +48,8 @@ h1 {
 }
 
 #energy-level, #num-electrons {
-  width: 3vw;
+  width: 8vw;
+  min-width: 50px;
   margin-left: 10px;
 }
 
