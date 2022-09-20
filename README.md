@@ -1,1 +1,1 @@
-A simple visualizer for the [Aufbau Principle](https://en.wikipedia.org/wiki/Aufbau_principle) (how electrons fill orbitals). Viewable at [http://willfs.com/electron-config-visualizer/index.html](http://willfs.com/electron-config-visualizer/index.html)
+A simple visualizer for the [Aufbau Principle](https://en.wikipedia.org/wiki/Aufbau_principle) (how electrons fill orbitals). Viewable at [http://willfs.com/electron-config-visualizer/index.html](http://willfs.com/electron-config-visualizer/index.html). Created with React and built with Yarn
